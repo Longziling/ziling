@@ -91,13 +91,20 @@ public class GetIntersectionNode {
         return currentA;
     }
 
+    /**
+     * 有公共节点，会在公共节点出现时停止循环
+     * 无公共节点，会在遍历完两个链表之后的最终点位置停止循环（即null位置停止）
+     * @param headA
+     * @param headB
+     * @return
+     */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) return null;
         ListNode pA = headA;
         ListNode pB = headB;
         while (pA != pB) {
             pA = pA == null ? headB : pA.next;
-            pB = pB == null ? headB : pB.next;
+            pB = pB == null ? headA : pB.next;
         }
         return pA;
     }
