@@ -29,6 +29,14 @@ public class MajorityElement {
     }
 
 
+    /**
+     * Boyer-Moore 投票算法(大前提，一定有众数)
+     * 如果我们把众数记为 +1，把其他数记为 -1，将它们全部加起来，显然和大于 0，从结果本身我们可以看出众数比其他数多。
+     * 时间复杂度：O(n)。Boyer-Moore 算法只对数组进行了一次遍历。
+     * 空间复杂度：O(1)。Boyer-Moore 算法只需要常数级别的额外空间。
+     * @param nums
+     * @return
+     */
     public int majorityElement(int[] nums) {
         int count = 0;
         Integer candidate = null;
@@ -66,6 +74,13 @@ public class MajorityElement {
     }
 
 
+    /**
+     * 分治算法
+     * 时间复杂度：O(nlogn)。
+     * 空间复杂度：O(logn)
+     * @param nums
+     * @return
+     */
     public int majorityElement1(int[] nums) {
         return majorityElementRec(nums, 0, nums.length-1);
     }

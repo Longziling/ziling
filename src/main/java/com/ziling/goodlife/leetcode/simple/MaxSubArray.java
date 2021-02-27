@@ -20,6 +20,11 @@ package com.ziling.goodlife.leetcode.simple;
  */
 public class MaxSubArray {
 
+    /**
+     * 时间复杂度：O(n)，其中 n 为 nums 数组的长度。我们只需要遍历一遍数组即可求得答案。
+     * 空间复杂度：O(1)。我们只需要常数空间存放若干变量。
+     * @return
+     */
     public static int maxSubArray(int[] nums) {
         int max = nums[0];
         for (int i = 0; i < nums.length; i++) {
@@ -45,8 +50,15 @@ public class MaxSubArray {
     }
 
 
-
-
+    /**
+     * 分治算法
+     * 时间复杂度为 O(n)
+     * 空间复杂度为 O(logn)
+     * @param nums
+     * @param l
+     * @param r
+     * @return
+     */
     public static SumItem get(int[] nums, int l, int r) {
         if (l == r) return new SumItem(nums[l], nums[l], nums[l], nums[l]);
         int m = (l + r) >> 1;
@@ -68,8 +80,7 @@ public class MaxSubArray {
         int[] nums = {-2,1,-3, -4,-1, -2,-1,-5, -4};
         SumItem item = get(nums, 0, nums.length - 1);
         Math.max(Math.max(item.getlSum(), item.getrSum()), Math.max(item.gettSum(), item.getmSum()));
-        System.out.println();
-
+        System.out.println(Math.max(Math.max(item.getlSum(), item.getrSum()), Math.max(item.gettSum(), item.getmSum())));
     }
 
 }

@@ -6,8 +6,8 @@ public class HammingDistancTest {
         int n = x ^ y;
         int distance = 0;
         while (n != 0) {
+            n &= n -1;
             distance++;
-            n = n & (n -1);
         }
         return distance;
     }
