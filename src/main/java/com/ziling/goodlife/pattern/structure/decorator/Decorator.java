@@ -18,10 +18,14 @@ public class Decorator {
         Dog dog = new Dog();
         AnimalDecorator whiteCat = new WhiteCommonDecorator(new Cat());
         AnimalDecorator whiteDog = new WhiteCommonDecorator(new Dog());
+        AnimalDecorator yearWhilteCat = new YearCommonDecorator(whiteCat);
+        AnimalDecorator yearWhiteDog = new YearCommonDecorator(whiteDog);
         list.add(cat);
         list.add(dog);
         list.add(whiteCat);
         list.add(whiteDog);
+        list.add(yearWhilteCat);
+        list.add(yearWhiteDog);
         for (Animal common : list) {
             common.print();
         }
@@ -56,8 +60,8 @@ abstract class AnimalDecorator implements Animal {
 }
 
 class WhiteCommonDecorator extends AnimalDecorator {
-    public WhiteCommonDecorator(Animal decoratedCommon) {
-        super(decoratedCommon);
+    public WhiteCommonDecorator(Animal decoratedAnimal) {
+        super(decoratedAnimal);
     }
     @Override
     public void print() {
@@ -67,5 +71,20 @@ class WhiteCommonDecorator extends AnimalDecorator {
 
     void setWhite(Animal decoratedAnimal) {
         System.out.println("Fur Color : White");
+    }
+}
+
+class YearCommonDecorator extends AnimalDecorator {
+    public YearCommonDecorator(Animal decoratedAnimal) {
+        super(decoratedAnimal);
+    }
+
+    @Override
+    public void print() {
+        decoratedAnimal.print();
+        setYear(decoratedAnimal);
+    }
+    void setYear(Animal decoratedAnimal) {
+        System.out.println("Year Old: 10");
     }
 }
