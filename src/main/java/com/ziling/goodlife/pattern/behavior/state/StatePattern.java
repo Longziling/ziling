@@ -1,5 +1,11 @@
 package com.ziling.goodlife.pattern.behavior.state;
 
+/**
+ * 状态模式
+ *
+ * 允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。
+ *
+ */
 public class StatePattern {
 
     public static void main(String[] args) {
@@ -19,7 +25,7 @@ public class StatePattern {
 }
 
 interface State {
-    public void doAction(Context context);
+    void doAction(Context context);
 }
 
 class StartState implements State {

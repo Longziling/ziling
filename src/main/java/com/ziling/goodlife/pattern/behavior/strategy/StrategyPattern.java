@@ -1,5 +1,11 @@
 package com.ziling.goodlife.pattern.behavior.strategy;
 
+/**
+ * 策略模式
+ *
+ * 定义了一系列算法，并将每个算法封装起来，使它们可以相互替换，且算法的变化不会影响使用算法的客户
+ *
+ */
 public class StrategyPattern {
 
     public static void main(String[] args) {
@@ -16,7 +22,7 @@ public class StrategyPattern {
 }
 
 interface Strategy {
-    public int doOperation(int num1, int num2);
+    int doOperation(int num1, int num2);
 }
 
 class OperationAdd implements Strategy{

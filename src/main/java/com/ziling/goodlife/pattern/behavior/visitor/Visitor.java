@@ -1,92 +1,112 @@
 package com.ziling.goodlife.pattern.behavior.visitor;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 访问者模式
+ *
+ * 将作用于某种数据结构中的各元素的操作分离出来封装成独立的类，使其在不改变数据结构的前提下可以添加作用于这些元素的新的操作，为数据结构中的每个元素提供多种访问方式。它将对数据的操作与数据结构进行分离
+ *
+ */
 public class Visitor {
-
-    public static void main(String[] args) {
-
-        ComputerPart computer = new Computer();
-        computer.accept(new ComputerPartDisplayVisitor());
-
-    }
-
-}
-
-interface ComputerPart {
-    void accept(ComputerPartVisitor computerPartVisitor);
-}
-
-interface ComputerPartVisitor {
-    void visit(Computer computer);
-    void visit(Mouse mouse);
-    void visit(Keyboard keyboard);
-    void visit(Monitor monitor);
-}
-
-
-class Keyboard  implements ComputerPart {
-
-    @Override
-    public void accept(ComputerPartVisitor computerPartVisitor) {
-        computerPartVisitor.visit(this);
-    }
-}
-
-class Monitor  implements ComputerPart {
-
-    @Override
-    public void accept(ComputerPartVisitor computerPartVisitor) {
-        computerPartVisitor.visit(this);
-    }
-}
-
-class Mouse  implements ComputerPart {
-
-    @Override
-    public void accept(ComputerPartVisitor computerPartVisitor) {
-        computerPartVisitor.visit(this);
-    }
-}
-
-class Computer implements ComputerPart {
-
-    ComputerPart[] parts;
-
-    public Computer(){
-        parts = new ComputerPart[] {new Mouse(), new Keyboard(), new Monitor()};
-    }
-
-
-    @Override
-    public void accept(ComputerPartVisitor computerPartVisitor) {
-        for (int i = 0; i < parts.length; i++) {
-            parts[i].accept(computerPartVisitor);
+    public static void main(String[] args){
+        List<Person> list = Allperson.getList();
+        System.out.println("得到名字:");
+        for(Person e: list){
+            e.accept(new VisitorName());
         }
-        computerPartVisitor.visit(this);
+        System.out.println("得到年龄:");
+        for(Person e: list){
+            e.accept(new VisitorAge());
+        }
     }
 }
 
-class ComputerPartDisplayVisitor implements ComputerPartVisitor {
+interface Person {
+    void accept(IVisitor visitor);
+}
 
-    @Override
-    public void visit(Computer computer) {
-        System.out.println("Displaying Computer.");
+interface IVisitor {
+    void visit(Student student);
+    void visit(Teacher teacher);
+}
+
+class Student implements Person {
+    private String name;
+    private int age;
+    public Student(String name,int age){
+        this.name = name;
+        this.age = age;
     }
 
-    @Override
-    public void visit(Mouse mouse) {
-        System.out.println("Displaying Mouse.");
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public void visit(Keyboard keyboard) {
-        System.out.println("Displaying Keyboard.");
+    public int getAge() {
+        return age;
     }
 
-    @Override
-    public void visit(Monitor monitor) {
-        System.out.println("Displaying Monitor.");
+    public void accept(IVisitor visitor) {
+        visitor.visit(this);
     }
 }
 
+class Teacher implements Person {
+    private String name;
+    private int age;
+    public Teacher(String name,int age){
+        this.name = name;
+        this.age = age;
+    }
 
+    public int getAge() {
+        return age;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void accept(IVisitor visitor) {
+        visitor.visit(this);
+    }
+}
+
+class VisitorName implements IVisitor {
+
+    public void visit(Student student) {
+        System.out.println(student.getName());
+    }
+
+    public void visit(Teacher teacher) {
+        System.out.println(teacher.getName());
+    }
+}
+
+class VisitorAge implements IVisitor {
+
+    public void visit(Student student) {
+        System.out.println(student.getAge());
+    }
+
+    public void visit(Teacher teacher) {
+        System.out.println(teacher.getAge());
+    }
+}
+
+class Allperson {
+    public static List<Person> getList(){
+        List<Person> list = new ArrayList<Person>();
+        Student s1 = new Student("路飞",20);
+        Student s2 = new Student("索隆",19);
+        Teacher t1 = new Teacher("红发",44);
+        Teacher t2 = new Teacher("雷利",59);
+        list.add(s1);
+        list.add(s2);
+        list.add(t1);
+        list.add(t2);
+        return list;
+    }
+}

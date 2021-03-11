@@ -3,6 +3,12 @@ package com.ziling.goodlife.pattern.behavior.observer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 观察者模式
+ *
+ * 定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态发生变化时，会通知所有观察者对象，使它们能够自动更新自己。
+ *
+ */
 public class ObserverPattern {
 
     public static void main(String[] args) {
@@ -43,23 +49,23 @@ interface Subject {
      * 注册主体
      * @param observer
      */
-    public void registerObserver(Observer observer);
+    void registerObserver(Observer observer);
 
     /**
      * 移除订阅
      * @param observer
      */
-    public void removeObserver(Observer observer);
+    void removeObserver(Observer observer);
 
     /**
      * 移除所有的观察者
      */
-    public void notifyObservers();
+    void notifyObservers();
 
     /**
      * 初始化主体相关信息
      */
-    public void initObservers();
+    void initObservers();
 }
 
 class Publisher implements Subject{

@@ -115,4 +115,80 @@ class Thread_ABC implements Runnable {
 //        }
 //        System.out.println(System.currentTimeMillis() - a);
 //    }
+
+
+
+
+
+
+//    @Data
+//    class MajusculeABC {
+//        private List<Character> list = new LinkedList<>();
+//
+//
+//        private int index = 0;
+//
+//
+//        private int loop = 10;
+//
+//
+//        private int currentLoop = 0;
+//
+//
+//        public void add(Character msg) {
+//            list.add(msg);
+//        }
+//
+//
+//        public void print(Character msg) {
+//            if (index / list.size() > 0) {
+//                index = index % list.size();
+//                currentLoop++;
+//            }
+//            if (list.get(index % list.size()) == msg) {
+//                index++;
+//                System.out.println(msg);
+//            }
+//        }
+//
+//
+//
+//
+//    }
+//
+//
+//    @Data
+//    class Thread_ABC implements Runnable {
+//        private MajusculeABC majusculeABC;
+//        private Character msg;
+//
+//
+//        public Thread_ABC(MajusculeABC majusculeABC, Character msg) {
+//            this.majusculeABC = majusculeABC;
+//            this.msg = msg;
+//            majusculeABC.add(msg);
+//        }
+//
+//
+//        @Override
+//        public void run() {
+//            while(true) {
+//                synchronized (majusculeABC) {
+//                    if (majusculeABC.getLoop() <= majusculeABC.getCurrentLoop()) {
+//                        break;
+//                    }
+//                    majusculeABC.print(msg);
+//                }
+//            }
+//
+//
+//        }
+//
+//
+//    }
+
+
+
+
+
 }
