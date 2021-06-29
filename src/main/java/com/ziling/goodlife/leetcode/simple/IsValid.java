@@ -1,8 +1,6 @@
 package com.ziling.goodlife.leetcode.simple;
 
-import java.util.Deque;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.Stack;
 
