@@ -11,8 +11,9 @@ public class FindN {
 
     public static void main(String[] args) {
         Solution so = new Solution();
-        int[] nums = {1, 2, 5, 9, 11, 15, 18, 19, 20, 21, 22, 25, 45, 48, 49, 52, 54, 56, 58, 67, 69};
-        System.out.println(so.search(nums, 19));
+//        int[] nums = {1, 2, 5, 9, 11, 15, 18, 19, 20, 21, 22, 25, 45, 48, 49, 52, 54, 56, 58, 67, 69};
+        int[] nums = {7,8,9,10,1,2,3};
+        System.out.println(so.search(nums, 9));
     }
 
 }
